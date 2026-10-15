@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#102b3f">
-<title>Private Banking Erhverv Danmark</title>
+<title>Nordlys Bank — Demo</title>
 <style>
 :root{--navy:#102b3f;--navy2:#183e55;--blue:#24617b;--sky:#dcecf1;--canvas:#f2f5f6;--paper:#fff;--ink:#182d3a;--muted:#71818b;--line:#e3e9ec;--green:#187b59;--red:#b84a4a;--gold:#e8c985}
 *{box-sizing:border-box}html{background:var(--canvas);-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--canvas);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:calc(86px + env(safe-area-inset-bottom))}.app{max-width:760px;margin:0 auto;min-height:100vh;background:var(--canvas)}
@@ -86,13 +86,13 @@ body { overflow-x: hidden; }
   <header class="top-area">
     <div class="topbar">
       <div class="brand"><div class="brandmark">N</div><span>Nordlys</span></div>
-      <div class="top-actions"><span class="demo-pill">Privat Konto - Anders Standal</span><button class="icon-btn" id="helpButton" aria-label="Om demoen">?</button></div>
+      <div class="top-actions"><span class="demo-pill">DEMO</span><button class="icon-btn" id="helpButton" aria-label="Om demoen">?</button></div>
     </div>
-    <p class="welcome">DIN ØKONOMI</p>
-    <h1 class="page-title">God aften, Anders Standal</h1>
+    <p class="welcome">TORSDAG · DIN ØKONOMI</p>
+    <h1 class="page-title">God aften, Alex</h1>
     <section class="balance-card" aria-label="Samlet saldo">
       <div class="balance-top"><span>Samlet saldo</span><button class="eye" id="toggleBalance" aria-label="Skjul saldo">◉</button></div>
-      <div class="balance" id="totalBalance">856.613.977,12 <small>kr.</small></div>
+      <div class="balance" id="totalBalance">12.845,50 <small>kr.</small></div>
       <div class="balance-foot"><span>Alle konti</span><span class="account-no">···· 4821</span></div>
     </section>
   </header>
@@ -107,14 +107,14 @@ body { overflow-x: hidden; }
     <section class="account-list" id="accounts"></section>
     <div class="section-head"><h2>Forbrug</h2><span class="subtle">Denne måned</span></div>
     <section class="spending-card" aria-label="Forbrugsoversigt">
-      <div class="spending-top"><div><div class="spending-label">Registrerede køb</div><div class="spending-total" id="spendingTotal">245,75 kr.</div></div><span class="trend">PLatinum Medlem</span></div>
+      <div class="spending-top"><div><div class="spending-label">Registrerede køb i demoen</div><div class="spending-total" id="spendingTotal">245,75 kr.</div></div><span class="trend">Demooversigt</span></div>
       <div class="bars" aria-label="Illustrativt månedligt forbrug"><div class="bar-wrap"><div class="bar" style="height:35%"></div><span class="bar-label">Jun</span></div><div class="bar-wrap"><div class="bar" style="height:54%"></div><span class="bar-label">Jul</span></div><div class="bar-wrap"><div class="bar" style="height:42%"></div><span class="bar-label">Aug</span></div><div class="bar-wrap"><div class="bar" style="height:67%"></div><span class="bar-label">Sep</span></div><div class="bar-wrap"><div class="bar current" style="height:48%"></div><span class="bar-label">Okt</span></div></div>
     </section>
     <div class="section-head"><h2>Seneste posteringer</h2><button class="link-btn" id="showAll">Se alle　›</button></div>
     <section class="transactions" id="transactions"></section>
-    <p class="demo-note">Alle køb, bliver vist inden for 24 timer.</p>
+    <p class="demo-note">Demo med fiktive beløb. Ingen rigtig bankforbindelse eller betalinger. Saldo og posteringer er kun eksempler og nulstilles, når siden genindlæses.</p>
   </div>
-  <div class="footer">Dansk Private Banking - Anders Standal - Platinum Medlem</div>
+  <div class="footer">Nordlys er et fiktivt bankapp-koncept.</div>
 </main>
 <nav class="bottom-nav" aria-label="Hovednavigation">
   <button class="nav-item active" data-target="top"><span class="nav-ico">⌂</span><span>Hjem</span></button>
@@ -127,7 +127,7 @@ body { overflow-x: hidden; }
     <label class="field" for="amount">Beløb i kroner</label><input class="input" id="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" placeholder="0,00" required>
     <div id="recipientWrap" hidden><label class="field" for="recipient">Modtager eller beskrivelse</label><input class="input" id="recipient" maxlength="60" placeholder="Fx Fiktiv butik"></div>
     <label class="field" for="accountSelect">Vælg konto</label><select id="accountSelect"></select>
-    <div class="actions"><button type="button" class="btn btn-secondary" id="cancelModal">Annuller</button><button type="submit" class="btn btn-primary" id="confirmAction"></button></div>
+    <div class="actions"><button type="button" class="btn btn-secondary" id="cancelModal">Annuller</button><button type="submit" class="btn btn-primary" id="confirmAction">Bekræft demo</button></div>
   </form>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -138,15 +138,34 @@ body { overflow-x: hidden; }
     {id:"savings",name:"Opsparing",detail:"Opsparingskonto ···· 1906",balance:4420.00,icon:"◈"},
     {id:"holding",name:"Holding Konto",detail:"Investerings- og holdingkonto ···· 7314",balance:0.00,icon:"▤"}
   ];
-  let accounts = initialAccounts.map(a=>({...a}));
-  let transactions = [
+  const STORAGE_KEY = "nordBankDemoState_v1";
+  const defaultTransactions = [
     {id:1,title:"Netto Supermarked",date:"I dag · 15.42",amount:-186.75,account:"card",icon:"🛒"},
     {id:2,title:"Overførsel fra familie",date:"I dag · 09.15",amount:500.00,account:"card",icon:"↙"},
     {id:3,title:"Abonnement",date:"14. okt. · 18.21",amount:-59.00,account:"card",icon:"♫"},
     {id:4,title:"Overførsel til opsparing",date:"13. okt. · 16.03",amount:-250.00,account:"card",icon:"↗"},
     {id:5,title:"Renter",date:"1. okt. · 08.00",amount:12.50,account:"savings",icon:"✦"}
   ];
+  let accounts = initialAccounts.map(a=>({...a}));
+  let transactions = defaultTransactions.map(t=>({...t}));
   let nextId=6,currentAction="add",expanded=false,balanceHidden=false;
+  // Gem demoens saldi og posteringer lokalt, så de overlever genindlæsning.
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    if (saved && Array.isArray(saved.accounts) && Array.isArray(saved.transactions)) {
+      const validAccounts = saved.accounts.length === initialAccounts.length && initialAccounts.every(a => saved.accounts.some(s => s.id === a.id && Number.isFinite(s.balance)));
+      const validTransactions = saved.transactions.every(t => Number.isFinite(t.amount) && typeof t.title === "string");
+      if (validAccounts && validTransactions) {
+        accounts = initialAccounts.map(a => ({...a, balance:saved.accounts.find(s => s.id === a.id).balance}));
+        transactions = saved.transactions;
+        nextId = Number.isInteger(saved.nextId) && saved.nextId > 0 ? saved.nextId : Math.max(6, ...transactions.map(t => (Number(t.id)||0) + 1));
+      }
+    }
+  } catch (e) { /* Brug standarddata, hvis lokal lagring ikke er tilgængelig. */ }
+  const saveState = () => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({accounts, transactions, nextId})); }
+    catch (e) { toast("Browseren kunne ikke gemme demo-data lokalt."); }
+  };
   const $=id=>document.getElementById(id);
   const money=n=>n.toLocaleString("da-DK",{minimumFractionDigits:2,maximumFractionDigits:2})+" kr.";
   const dateLabel=()=>new Date().toLocaleDateString("da-DK",{day:"numeric",month:"short"})+" · "+new Date().toLocaleTimeString("da-DK",{hour:"2-digit",minute:"2-digit"});
@@ -188,7 +207,7 @@ body { overflow-x: hidden; }
     if(currentAction==="add"){account.balance+=amount;transactions.unshift({id:nextId++,title:recipient||"Indsat demo-beløb",date:dateLabel(),amount,account:account.id,icon:"↙"});toast("Demo-beløbet er tilføjet.");}
     else if(currentAction==="expense"){if(account.balance<amount){toast("Der er ikke nok demo-penge på kontoen.");return;}account.balance-=amount;transactions.unshift({id:nextId++,title:recipient||"Demo-køb",date:dateLabel(),amount:-amount,account:account.id,icon:"🧾"});toast("Købet er registreret i demoen.");}
     else {const target=accounts.find(a=>a.id!==account.id);if(!target){toast("Der mangler en anden konto.");return;}if(account.balance<amount){toast("Der er ikke nok demo-penge på kontoen.");return;}account.balance-=amount;target.balance+=amount;transactions.unshift({id:nextId++,title:"Overførsel til "+target.name,date:dateLabel(),amount:-amount,account:account.id,icon:"↗"});transactions.unshift({id:nextId++,title:"Overførsel fra "+account.name,date:dateLabel(),amount,account:target.id,icon:"↙"});toast("Demooverførslen er gennemført.");}
-    render();closeModal();
+    saveState();render();closeModal();
   });
   render();
 })();
