@@ -4,96 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#102b3f">
-<title>Nordlys Bank — Demo</title>
+<title>Private Banking Erhverv Danmark</title>
 <style>
-:root{--navy:#173b57;--blue:#28658a;--canvas:#f5f6f7;--paper:#fff;--ink:#202a32;--muted:#697781;--line:#dfe4e7;--green:#18734f;--red:#a84444}
-*{box-sizing:border-box}html{background:var(--canvas);-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--canvas);color:var(--ink);font-family:Arial,Helvetica,sans-serif;padding-bottom:72px}.app{max-width:720px;margin:0 auto;min-height:100vh;background:var(--canvas)}
-.top-area{background:var(--navy);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 22px 24px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:700;letter-spacing:-.35px;font-size:21px}.brandmark{display:none}.top-actions{display:flex;align-items:center;gap:10px}.icon-btn{border:1px solid #ffffff55;color:#fff;background:transparent;border-radius:4px;width:32px;height:32px;font-size:16px;display:grid;place-items:center;cursor:pointer}.demo-pill{font-size:10px;font-weight:700;letter-spacing:.3px;border:1px solid #ffffff55;border-radius:3px;padding:5px 7px;color:#fff}.welcome{margin:24px 0 7px;color:#d5e0e7;font-size:12px}.page-title{font-size:24px;letter-spacing:-.45px;margin:0;font-weight:600}.balance-card{margin:20px 0 0;background:transparent;border-top:1px solid #ffffff40;border-radius:0;padding:16px 0 0;position:relative;overflow:hidden}.balance-card:after{display:none}.balance-top{display:flex;justify-content:space-between;align-items:center;color:#d5e0e7;font-size:13px}.eye{border:0;background:transparent;color:#fff;font-size:14px;padding:4px;cursor:pointer}.balance{font-size:clamp(30px,7vw,36px);font-weight:600;letter-spacing:-.8px;margin:10px 0 15px;font-variant-numeric:tabular-nums}.balance small{font-size:16px;letter-spacing:0;font-weight:500}.balance-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ffffff30;padding-top:12px;color:#d5e0e7;font-size:12px}.account-no{letter-spacing:1px}
-.content{padding:0 20px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:24px 0 10px}.section-head h2{font-size:17px;letter-spacing:-.2px;margin:0;font-weight:700}.link-btn{border:0;background:transparent;color:var(--blue);font-size:12px;font-weight:600;padding:8px 0;cursor:pointer}.subtle{font-size:12px;color:var(--muted)}
-.account-list{display:block;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.account{background:var(--paper);border:0;border-bottom:1px solid var(--line);border-radius:0;padding:16px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 12px;min-width:0;box-shadow:none}.account:last-child{border-bottom:0}.account:nth-child(n){border-left:0}.account-main{min-width:0}.account-name{font-weight:600;font-size:14px;letter-spacing:0}.account-detail{font-size:12px;color:var(--muted);margin-top:5px}.account-amount{font-size:14px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;grid-column:2;grid-row:1 / span 2;text-align:right}.account:active{background:#f1f4f6}
-.actions-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin-top:0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.action{border:0;border-right:1px solid var(--line);border-radius:0;background:var(--paper);padding:14px 7px;min-height:66px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;color:var(--blue);font:inherit;cursor:pointer}.action:last-child{border-right:0}.action-icon{display:none}.action span:last-child{font-size:12px;font-weight:600;text-align:center;line-height:1.3}.action:active{background:#f1f4f6;transform:none}
-.spending-card{border:1px solid var(--line);border-radius:3px;background:var(--paper);padding:15px}.spending-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.spending-label{font-size:12px;color:var(--muted)}.spending-total{font-size:20px;font-weight:600;letter-spacing:-.3px;margin-top:5px}.trend{font-size:11px;color:var(--muted);background:#f1f3f4;border-radius:2px;padding:5px 6px;font-weight:600}.bars{height:68px;display:flex;align-items:flex-end;gap:9px;margin-top:15px;padding:0 3px}.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}.bar{width:100%;max-width:30px;background:#cbd8df;border-radius:0;min-height:8px}.bar.current{background:var(--blue)}.bar-label{font-size:10px;color:var(--muted)}
-.transactions{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.transaction{padding:14px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}.transaction:last-child{border-bottom:0}.tx-icon{display:none}.tx-main{flex:1;min-width:0}.tx-title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tx-date{font-size:11px;color:var(--muted);margin-top:5px}.tx-amount{font-size:13px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}.positive{color:var(--green)}.negative{color:var(--ink)}.empty{padding:24px;text-align:center;color:var(--muted);font-size:13px}.demo-note{font-size:11px;line-height:1.5;color:#655b43;background:#f7f3e9;border:1px solid #e8dfca;border-radius:2px;padding:11px 12px;margin:22px 0 12px}.footer{text-align:center;color:#87929a;font-size:10px;padding:0 15px 22px}
-.bottom-nav{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,720px);padding:0 8px calc( env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}.nav-item{display:flex;align-items:center;justify-content:center;color:#697781;font-size:12px;font-weight:600;text-decoration:none;padding:16px 4px;border:0;border-bottom:2px solid transparent;background:transparent;cursor:pointer}.nav-item .nav-ico{display:none}.nav-item.active{color:var(--navy);border-bottom-color:var(--blue)}
-.modal-backdrop{position:fixed;inset:0;background:#10243388;display:none;align-items:flex-end;justify-content:center;padding:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom));z-index:10;overscroll-behavior:contain}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:8px;padding:22px;width:min(100%,460px);max-height:calc(100dvh - 25px);overflow-y:auto;box-shadow:0 8px 28px #0002}.modal-handle{display:none}.modal h2{font-size:20px;letter-spacing:-.2px;margin:0 0 7px}.modal p{font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 18px}.field{display:block;font-size:12px;font-weight:700;margin:13px 0 7px}.input,select{width:100%;min-height:48px;border:1px solid #cbd4d9;border-radius:4px;padding:12px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}.actions{display:flex;gap:9px;margin-top:20px}.btn{min-height:46px;border:0;border-radius:4px;padding:12px 15px;font-weight:700;font-size:13px;cursor:pointer}.btn-primary{background:var(--navy);color:#fff;flex:1}.btn-secondary{background:#edf0f2;color:var(--ink)}.toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom));transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--navy);color:#fff;padding:12px 16px;border-radius:4px;font-size:12px;box-shadow:0 3px 12px #0002;transition:.2s;z-index:20;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}button,input,select{touch-action:manipulation}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #78b6ca;outline-offset:2px}
-@media(min-width:600px){.top-area{padding-left:28px;padding-right:28px}.content{padding-left:28px;padding-right:28px}.modal-backdrop{align-items:center}}
-@media(max-width:380px){.top-area{padding-left:16px;padding-right:16px}.content{padding-left:12px;padding-right:12px}.brand{font-size:19px}.balance-card{padding-top:14px}.account{padding:14px 9px;gap:6px}.account-amount{font-size:12px}.actions-grid{grid-template-columns:1fr}.action{border-right:0;border-bottom:1px solid var(--line);min-height:48px}.action:last-child{border-bottom:0}.transaction{padding:12px 8px;gap:7px}.tx-amount{font-size:12px}}
+:root{--navy:#102b3f;--navy2:#183e55;--blue:#24617b;--sky:#dcecf1;--canvas:#f2f5f6;--paper:#fff;--ink:#182d3a;--muted:#71818b;--line:#e3e9ec;--green:#187b59;--red:#b84a4a;--gold:#e8c985}
+*{box-sizing:border-box}html{background:var(--canvas);-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--canvas);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:calc(86px + env(safe-area-inset-bottom))}.app{max-width:760px;margin:0 auto;min-height:100vh;background:var(--canvas)}
+.top-area{background:var(--navy);color:white;padding:calc(20px + env(safe-area-inset-top)) 22px 34px;border-radius:0 0 28px 28px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:-.4px;font-size:19px}.brandmark{height:39px;width:39px;border:1px solid #ffffff4a;border-radius:13px;display:grid;place-items:center;color:var(--gold);font-size:20px;font-weight:800}.top-actions{display:flex;align-items:center;gap:9px}.icon-btn{border:1px solid #ffffff30;color:#fff;background:#ffffff0c;border-radius:50%;width:39px;height:39px;font-size:18px;display:grid;place-items:center;cursor:pointer}.demo-pill{font-size:9px;font-weight:800;letter-spacing:.6px;border:1px solid #ffffff40;border-radius:5px;padding:5px 7px;color:#f4dfad;white-space:nowrap}.welcome{margin:27px 0 6px;color:#c1d1db;font-size:13px}.page-title{font-size:25px;letter-spacing:-.7px;margin:0;font-weight:650}.balance-card{margin:23px 0 0;background:#1c4359;border:1px solid #ffffff1b;border-radius:18px;padding:20px 19px 17px;position:relative;overflow:hidden}.balance-card:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #ffffff12;border-radius:50%;right:-90px;top:-85px;box-shadow:0 0 0 24px #ffffff06,0 0 0 48px #ffffff04;pointer-events:none}.balance-top{display:flex;justify-content:space-between;align-items:center;color:#c2d3dc;font-size:12px;position:relative;z-index:1}.eye{border:0;background:transparent;color:#dbe6eb;font-size:16px;padding:4px;cursor:pointer}.balance{font-size:clamp(31px,7vw,39px);font-weight:720;letter-spacing:-1.3px;margin:13px 0 17px;font-variant-numeric:tabular-nums;position:relative;z-index:1}.balance small{font-size:17px;letter-spacing:0;font-weight:600}.balance-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ffffff20;padding-top:13px;color:#c2d3dc;font-size:11px;position:relative;z-index:1}.account-no{letter-spacing:1.3px}
+.content{padding:0 18px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:27px 2px 13px}.section-head h2{font-size:17px;letter-spacing:-.25px;margin:0;font-weight:750}.link-btn{border:0;background:transparent;color:var(--blue);font-size:12px;font-weight:750;padding:8px 3px;cursor:pointer}.actions-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:-1px}.action{border:1px solid var(--line);border-radius:15px;background:var(--paper);padding:15px 7px 13px;min-height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;color:var(--ink);font:inherit;cursor:pointer;box-shadow:0 2px 4px #15374b05}.action-icon{height:42px;width:42px;border-radius:14px;background:var(--sky);color:var(--navy2);display:grid;place-items:center;font-size:21px}.action span:last-child{font-size:12px;font-weight:700;text-align:center;line-height:1.25}.action:active{transform:scale(.98)}
+.account-list{display:grid;gap:9px}.account{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:15px 14px;display:flex;align-items:center;gap:12px;min-width:0}.account-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:#edf2f4;color:var(--navy2);font-size:20px;flex-shrink:0}.account-icon.savings{background:#f7f0df;color:#87672b}.account-main{flex:1;min-width:0}.account-name{font-weight:750;font-size:13px}.account-detail{font-size:11px;color:var(--muted);margin-top:5px}.account-amount{font-size:13px;font-weight:750;white-space:nowrap;font-variant-numeric:tabular-nums}
+.spending-card{border:1px solid var(--line);border-radius:15px;background:var(--paper);padding:16px 15px}.spending-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.spending-label{font-size:12px;color:var(--muted)}.spending-total{font-size:21px;font-weight:750;letter-spacing:-.5px;margin-top:5px}.trend{font-size:11px;color:var(--green);background:#e7f4ee;border-radius:6px;padding:6px 7px;font-weight:700}.bars{height:72px;display:flex;align-items:flex-end;gap:9px;margin-top:16px;padding:0 3px}.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}.bar{width:100%;max-width:30px;background:#c9dfe6;border-radius:5px 5px 2px 2px;min-height:8px}.bar.current{background:var(--blue)}.bar-label{font-size:9px;color:var(--muted)}
+.transactions{background:var(--paper);border:1px solid var(--line);border-radius:15px;overflow:hidden}.transaction{padding:13px 12px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--line)}.transaction:last-child{border-bottom:0}.tx-icon{width:40px;height:40px;border-radius:13px;background:#f0f3f4;display:grid;place-items:center;font-size:18px;flex-shrink:0}.tx-icon.income{background:#e7f4ee}.tx-main{flex:1;min-width:0}.tx-title{font-size:12px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tx-date{font-size:10px;color:var(--muted);margin-top:5px}.tx-amount{font-size:12px;font-weight:750;white-space:nowrap;font-variant-numeric:tabular-nums}.positive{color:var(--green)}.negative{color:var(--ink)}.empty{padding:24px;text-align:center;color:var(--muted);font-size:13px}.demo-note{font-size:10px;line-height:1.55;color:#7c6a42;background:#fbf5e7;border:1px solid #eee1c0;border-radius:10px;padding:11px 12px;margin:22px 0 12px}.footer{text-align:center;color:#89959d;font-size:10px;padding:0 15px 22px}
+.bottom-nav{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,760px);padding:10px 15px calc(10px + env(safe-area-inset-bottom));background:#ffffffed;backdrop-filter:blur(14px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}.nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#84929a;font-size:9px;font-weight:700;text-decoration:none;padding:3px 0;border:0;background:transparent;cursor:pointer}.nav-item .nav-ico{font-size:20px;line-height:1.2}.nav-item.active{color:var(--navy)}.nav-item.active .nav-ico{color:var(--blue)}
+.modal-backdrop{position:fixed;inset:0;background:#071a28a6;display:none;align-items:flex-end;justify-content:center;padding:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom));z-index:10;overscroll-behavior:contain}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:22px 22px 14px 14px;padding:22px;width:min(100%,480px);max-height:calc(100dvh - 25px);overflow-y:auto;box-shadow:0 15px 50px #0003}.modal-handle{height:4px;width:38px;border-radius:9px;background:#dce3e6;margin:-9px auto 19px}.modal h2{font-size:21px;letter-spacing:-.4px;margin:0 0 7px}.modal p{font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 18px}.field{display:block;font-size:12px;font-weight:750;margin:13px 0 7px}.input,select{width:100%;min-height:49px;border:1px solid #d4dfe4;border-radius:10px;padding:13px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}.actions{display:flex;gap:9px;margin-top:20px}.btn{min-height:49px;border:0;border-radius:10px;padding:13px 15px;font-weight:750;font-size:13px;cursor:pointer}.btn-primary{background:var(--navy);color:#fff;flex:1}.btn-secondary{background:#eef2f4;color:var(--ink)}.toast{position:fixed;left:50%;bottom:calc(95px + env(safe-area-inset-bottom));transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--navy);color:white;padding:12px 16px;border-radius:11px;font-size:12px;box-shadow:0 5px 18px #0002;transition:.2s;z-index:20;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}button,input,select{touch-action:manipulation}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #78b6ca;outline-offset:2px}
+@media(min-width:600px){.top-area{padding-left:30px;padding-right:30px}.content{padding-left:30px;padding-right:30px}.modal-backdrop{align-items:center}.modal{border-radius:20px}}
+@media(max-width:380px){.top-area{padding-left:16px;padding-right:16px}.content{padding-left:12px;padding-right:12px}.demo-pill{font-size:8px;padding:5px}.brand{font-size:17px}.brandmark{width:35px;height:35px}.balance-card{padding:17px 15px}.account{padding:12px 10px;gap:9px}.account-amount{font-size:11px}.actions-grid{gap:7px}.action{min-height:98px;padding:12px 4px}.action span:last-child{font-size:11px}.transaction{padding:12px 9px;gap:8px}.tx-amount{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 
-/* Mobile layout refinements */
-html,body{width:100%;min-width:0;overflow-x:hidden}
-.app{width:100%;overflow:hidden}
-.top-area{padding-top:calc(16px + env(safe-area-inset-top));padding-bottom:21px}
-.topbar{min-width:0;gap:8px}
-.brand{min-width:0;overflow-wrap:anywhere;line-height:1.15}
-.top-actions{flex-shrink:0;gap:7px}
-.content{min-width:0}
-.section-head{gap:10px;min-width:0}
-.section-head h2{min-width:0}
-.link-btn{flex-shrink:0;white-space:nowrap}
-.account{grid-template-columns:minmax(0,1fr) auto;gap:6px 8px}
-.account-detail{overflow-wrap:anywhere;line-height:1.35}
-.account-amount{max-width:46vw;font-size:13px;white-space:normal;overflow-wrap:anywhere;line-height:1.3}
-.actions-grid .action{align-items:flex-start;text-align:left;padding:16px 14px;min-height:54px}
-.actions-grid .action span:last-child{text-align:left;font-size:13px}
-.spending-card{padding:13px 12px}
-.spending-top{align-items:flex-start}
-.spending-top>div{min-width:0}
-.spending-label{line-height:1.4}
-.spending-total{font-size:clamp(18px,5vw,22px);overflow-wrap:anywhere}
-.trend{flex-shrink:0;white-space:nowrap}
-.transaction{min-width:0;gap:8px;padding:13px 10px}
-.tx-main{min-width:0}
-.tx-title{font-size:13px}
-.tx-amount{flex-shrink:0;max-width:44%;white-space:normal;text-align:right;overflow-wrap:anywhere;line-height:1.35;font-size:12px}
-.bottom-nav{width:100%;padding:0 3px calc(env(safe-area-inset-bottom));}
-.nav-item{min-width:0;padding:15px 2px 13px;font-size:11px;white-space:nowrap}
-.modal-backdrop{padding:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
-.modal{width:100%;border-radius:10px 10px 6px 6px;padding:20px 17px;max-height:calc(100dvh - 16px - env(safe-area-inset-top));}
-.actions{gap:8px}
-.btn{padding:12px 10px}
-.toast{width:max-content;max-width:calc(100vw - 28px);}
-@media(max-width:420px){
-  .top-area{padding-left:16px;padding-right:16px}
-  .content{padding-left:14px;padding-right:14px}
-  .brand{font-size:18px;letter-spacing:-.25px}
-  .demo-pill{font-size:9px;padding:5px 6px}
-  .icon-btn{width:30px;height:30px;flex-shrink:0}
-  .welcome{margin-top:20px;font-size:11px}
-  .page-title{font-size:clamp(21px,6vw,24px);line-height:1.2;overflow-wrap:anywhere}
-  .balance-card{margin-top:18px;padding-top:14px}
-  .balance{font-size:clamp(28px,8vw,34px);letter-spacing:-.7px;overflow-wrap:anywhere}
-  .balance small{font-size:14px}
-  .balance-foot{font-size:11px;gap:10px}
-  .section-head{margin-top:21px;margin-bottom:9px}
-  .section-head h2{font-size:16px}
-  .account{padding:14px 10px}
-  .account-name{font-size:13px}
-  .account-detail{font-size:11px}
-  .account-amount{font-size:12px;max-width:43vw}
-  .spending-label{font-size:11px}
-  .trend{font-size:10px;padding:5px}
-  .bars{gap:7px;height:62px}
-  .bar-label{font-size:10px}
-  .tx-title{font-size:12px}
-  .tx-date{font-size:10px}
-  .tx-amount{font-size:11px;max-width:46%}
-  .demo-note{font-size:10px}
+/* Refined motion and uninterrupted blue header */
+html, body { background: var(--canvas); }
+body { overflow-x: hidden; }
+.top-area {
+  background: linear-gradient(145deg, #12334d 0%, #174765 52%, #205d7c 100%);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: calc(22px + env(safe-area-inset-top));
 }
-@media(max-width:340px){
-  .top-area{padding-left:12px;padding-right:12px}
-  .content{padding-left:10px;padding-right:10px}
-  .brand{font-size:16px}
-  .top-actions{gap:5px}
-  .demo-pill{letter-spacing:0}
-  .balance-top{font-size:12px}
-  .account{grid-template-columns:minmax(0,1fr) minmax(76px,auto);padding:12px 8px}
-  .account-amount{font-size:11px;max-width:39vw}
-  .spending-top{gap:5px}
-  .trend{font-size:9px}
-  .nav-item{font-size:10px}
-  .actions{flex-direction:column-reverse}
-  .btn{width:100%}
+.top-area::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at 88% 0%, rgba(119,190,218,.18), transparent 48%);
+}
+.top-area > * { position: relative; }
+.brand { line-height: 1.25; }
+.balance-card { animation: rise-in .65s cubic-bezier(.2,.75,.25,1) both; }
+.content > .section-head, .content > section, .content > .demo-note {
+  animation: rise-in .55s cubic-bezier(.2,.75,.25,1) both;
+}
+.content > .section-head:nth-of-type(1) { animation-delay: .04s; }
+.account { transition: background-color .2s ease, padding-left .2s ease; }
+.account:active { padding-left: 16px; }
+.action, .nav-item, .link-btn, .icon-btn, .eye, .btn {
+  transition: background-color .2s ease, color .2s ease, transform .2s ease, opacity .2s ease;
+}
+.action:active, .btn:active { transform: scale(.985); }
+.icon-btn:active { background: #ffffff20; }
+.modal-backdrop { opacity: 0; transition: opacity .22s ease; }
+.modal-backdrop.show { opacity: 1; }
+.modal { transform: translateY(18px); transition: transform .25s cubic-bezier(.2,.75,.25,1); }
+.modal-backdrop.show .modal { transform: translateY(0); }
+.bar { transform-origin: bottom; animation: bar-grow .8s cubic-bezier(.2,.75,.25,1) both; }
+.bar-wrap:nth-child(2) .bar { animation-delay: .06s; }
+.bar-wrap:nth-child(3) .bar { animation-delay: .12s; }
+.bar-wrap:nth-child(4) .bar { animation-delay: .18s; }
+.bar-wrap:nth-child(5) .bar { animation-delay: .24s; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes bar-grow { from { transform: scaleY(.08); opacity: .5; } to { transform: scaleY(1); opacity: 1; } }
+@media(max-width:420px) {
+  .top-area { padding-left: 17px; padding-right: 17px; padding-bottom: 22px; }
+  .brand { font-size: 17px; letter-spacing: -.25px; }
+  .top-actions { gap: 7px; }
+  .demo-pill { font-size: 9px; padding: 5px 6px; }
+  .page-title { font-size: clamp(20px, 5.8vw, 24px); }
+  .content { padding-left: 14px; padding-right: 14px; }
+  .account { padding: 15px 10px; }
+  .account-name { font-size: 13px; }
+  .account-detail { font-size: 11px; }
+  .account-amount { font-size: 12px; }
+  .bottom-nav { padding-left: 4px; padding-right: 4px; }
+  .nav-item { padding: 15px 2px; font-size: 11px; }
+  .modal-backdrop { padding: 8px; padding-bottom: calc(8px + env(safe-area-inset-bottom)); }
+  .modal { padding: 20px 17px; border-radius: 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .balance-card, .content > .section-head, .content > section, .content > .demo-note, .bar { animation: none !important; }
+  .modal-backdrop, .modal, .action, .nav-item, .link-btn, .icon-btn, .eye, .btn, .account { transition: none !important; }
 }
 
 </style>
@@ -102,50 +85,49 @@ html,body{width:100%;min-width:0;overflow-x:hidden}
 <main class="app">
   <header class="top-area">
     <div class="topbar">
-      <div class="brand">Nordlys Bank</div>
-      <div class="top-actions"><span class="demo-pill">DEMO</span><button class="icon-btn" id="helpButton" aria-label="Om demoen">?</button></div>
+      <div class="brand"><div class="brandmark">N</div><span>Nordlys</span></div>
+      <div class="top-actions"><span class="demo-pill">Privat Konto - Anders Standal</span><button class="icon-btn" id="helpButton" aria-label="Om demoen">?</button></div>
     </div>
-    <p class="welcome">TORSDAG · DIN ØKONOMI</p>
-    <h1 class="page-title">God aften, Alex</h1>
+    <p class="welcome">DIN ØKONOMI</p>
+    <h1 class="page-title">God aften, Anders Standal</h1>
     <section class="balance-card" aria-label="Samlet saldo">
-      <div class="balance-top"><span>Samlet saldo</span><button class="eye" id="toggleBalance" aria-label="Skjul saldo">Skjul saldo</button></div>
-      <div class="balance" id="totalBalance">12.845,50 <small>kr.</small></div>
+      <div class="balance-top"><span>Samlet saldo</span><button class="eye" id="toggleBalance" aria-label="Skjul saldo">◉</button></div>
+      <div class="balance" id="totalBalance">856.613.977,12 <small>kr.</small></div>
       <div class="balance-foot"><span>Alle konti</span><span class="account-no">···· 4821</span></div>
     </section>
   </header>
   <div class="content">
-    <div class="section-head"><h2>Mine konti</h2><button class="link-btn" id="accountsLink">3 konti　›</button></div>
-    <section class="account-list" id="accounts"></section>
     <div class="section-head"><h2>Genveje</h2></div>
     <section class="actions-grid" aria-label="Hurtige handlinger">
-      <button class="action" id="transfer"><span>Overfør mellem konti</span></button>
+      <button class="action" id="addMoney"><span class="action-icon">＋</span><span>Indsæt beløb</span></button>
+      <button class="action" id="transfer"><span class="action-icon">↗</span><span>Overfør mellem konti</span></button>
+      <button class="action" id="newExpense"><span class="action-icon">−</span><span>Registrér køb</span></button>
     </section>
-    <section id="moreOptions" hidden aria-label="Flere funktioner" style="margin-top:10px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-      <button class="action" id="addMoney" style="width:100%;align-items:flex-start;padding-left:12px"><span>Indsæt beløb</span></button>
-    </section>
+    <div class="section-head"><h2>Mine konti</h2><button class="link-btn" id="accountsLink">3 konti　›</button></div>
+    <section class="account-list" id="accounts"></section>
     <div class="section-head"><h2>Forbrug</h2><span class="subtle">Denne måned</span></div>
     <section class="spending-card" aria-label="Forbrugsoversigt">
-      <div class="spending-top"><div><div class="spending-label">Registrerede køb i demoen</div><div class="spending-total" id="spendingTotal">245,75 kr.</div></div><span class="trend">Demooversigt</span></div>
+      <div class="spending-top"><div><div class="spending-label">Registrerede køb</div><div class="spending-total" id="spendingTotal">245,75 kr.</div></div><span class="trend">PLatinum Medlem</span></div>
       <div class="bars" aria-label="Illustrativt månedligt forbrug"><div class="bar-wrap"><div class="bar" style="height:35%"></div><span class="bar-label">Jun</span></div><div class="bar-wrap"><div class="bar" style="height:54%"></div><span class="bar-label">Jul</span></div><div class="bar-wrap"><div class="bar" style="height:42%"></div><span class="bar-label">Aug</span></div><div class="bar-wrap"><div class="bar" style="height:67%"></div><span class="bar-label">Sep</span></div><div class="bar-wrap"><div class="bar current" style="height:48%"></div><span class="bar-label">Okt</span></div></div>
     </section>
     <div class="section-head"><h2>Seneste posteringer</h2><button class="link-btn" id="showAll">Se alle　›</button></div>
     <section class="transactions" id="transactions"></section>
-    <p class="demo-note">Demo med fiktive beløb. Ingen rigtig bankforbindelse eller betalinger. Saldo og posteringer er kun eksempler og nulstilles, når siden genindlæses.</p>
+    <p class="demo-note">Alle køb, bliver vist inden for 24 timer.</p>
   </div>
-  <div class="footer">Nordlys er et fiktivt bankapp-koncept.</div>
+  <div class="footer">Dansk Private Banking - Anders Standal - Platinum Medlem</div>
 </main>
 <nav class="bottom-nav" aria-label="Hovednavigation">
-  <button class="nav-item active" data-target="top"><span>Hjem</span></button>
-  <button class="nav-item" data-target="accounts"><span>Konti</span></button>
-  <button class="nav-item" data-target="transactions"><span>Posteringer</span></button>
-  <button class="nav-item" id="navMore"><span>Mere</span></button>
+  <button class="nav-item active" data-target="top"><span class="nav-ico">⌂</span><span>Hjem</span></button>
+  <button class="nav-item" data-target="accounts"><span class="nav-ico">▤</span><span>Konti</span></button>
+  <button class="nav-item" data-target="transactions"><span class="nav-ico">⇄</span><span>Posteringer</span></button>
+  <button class="nav-item" id="navMore"><span class="nav-ico">•••</span><span>Mere</span></button>
 </nav>
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <form class="modal" id="actionForm"><div class="modal-handle"></div><h2 id="modalTitle">Handling</h2><p id="modalDescription">Dette er en lokal simulering.</p>
     <label class="field" for="amount">Beløb i kroner</label><input class="input" id="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" placeholder="0,00" required>
     <div id="recipientWrap" hidden><label class="field" for="recipient">Modtager eller beskrivelse</label><input class="input" id="recipient" maxlength="60" placeholder="Fx Fiktiv butik"></div>
     <label class="field" for="accountSelect">Vælg konto</label><select id="accountSelect"></select>
-    <div class="actions"><button type="button" class="btn btn-secondary" id="cancelModal">Annuller</button><button type="submit" class="btn btn-primary" id="confirmAction">Bekræft demo</button></div>
+    <div class="actions"><button type="button" class="btn btn-secondary" id="cancelModal">Annuller</button><button type="submit" class="btn btn-primary" id="confirmAction"></button></div>
   </form>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -171,12 +153,12 @@ html,body{width:100%;min-width:0;overflow-x:hidden}
   function render(){
     const total=accounts.reduce((sum,a)=>sum+a.balance,0);
     $("totalBalance").innerHTML=balanceHidden?'•••••• <small>kr.</small>':money(total).replace(" kr."," <small>kr.</small>");
-    $("toggleBalance").textContent=balanceHidden?"Vis saldo":"Skjul saldo";
+    $("toggleBalance").textContent=balanceHidden?"◎":"◉";
     $("toggleBalance").setAttribute("aria-label",balanceHidden?"Vis saldo":"Skjul saldo");
-    $("accounts").innerHTML=accounts.map(a=>`<article class="account"><div class="account-main"><div class="account-name">${escapeHtml(a.name)}</div><div class="account-detail">${escapeHtml(a.detail)}</div></div><div class="account-amount">${balanceHidden?"••••••":money(a.balance)}</div></article>`).join("");
+    $("accounts").innerHTML=accounts.map(a=>`<article class="account"><div class="account-icon ${a.id==="savings"?"savings":""}">${a.icon}</div><div class="account-main"><div class="account-name">${escapeHtml(a.name)}</div><div class="account-detail">${escapeHtml(a.detail)}</div></div><div class="account-amount">${balanceHidden?"••••••":money(a.balance)}</div></article>`).join("");
     $("accountSelect").innerHTML=accounts.map(a=>`<option value="${a.id}">${escapeHtml(a.name)} · ${money(a.balance)}</option>`).join("");
     const list=expanded?transactions:transactions.slice(0,5);
-    $("transactions").innerHTML=list.length?list.map(t=>`<article class="transaction"><div class="tx-main"><div class="tx-title">${escapeHtml(t.title)}</div><div class="tx-date">${escapeHtml(t.date)}</div></div><div class="tx-amount ${t.amount>0?"positive":"negative"}">${t.amount>0?"+":"−"}${money(Math.abs(t.amount))}</div></article>`).join(""):`<div class="empty">Ingen posteringer endnu.</div>`;
+    $("transactions").innerHTML=list.length?list.map(t=>`<article class="transaction"><div class="tx-icon ${t.amount>0?"income":""}">${t.icon}</div><div class="tx-main"><div class="tx-title">${escapeHtml(t.title)}</div><div class="tx-date">${escapeHtml(t.date)}</div></div><div class="tx-amount ${t.amount>0?"positive":"negative"}">${t.amount>0?"+":"−"}${money(Math.abs(t.amount))}</div></article>`).join(""):`<div class="empty">Ingen posteringer endnu.</div>`;
     $("showAll").textContent=expanded?"Vis færre　⌃":"Se alle　›";
     const spent=transactions.filter(t=>t.amount<0).reduce((s,t)=>s+Math.abs(t.amount),0);
     $("spendingTotal").textContent=money(spent);
@@ -185,25 +167,26 @@ html,body{width:100%;min-width:0;overflow-x:hidden}
   function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2600);}
   function openModal(action){
     currentAction=action;
-    const config={add:{title:"Indsæt beløb",description:"Tilføj et fiktivt beløb til en konto i demoen.",button:"Indsæt beløb",recipient:false},transfer:{title:"Overfør mellem konti",description:"Flytter kun fiktive penge mellem dine egne konti.",button:"Gennemfør demooverførsel",recipient:false}}[action];
+    const config={add:{title:"Indsæt beløb",description:"Tilføj et fiktivt beløb til en konto i demoen.",button:"Indsæt beløb",recipient:false},transfer:{title:"Overfør mellem konti",description:"Flytter kun fiktive penge mellem dine egne konti.",button:"Gennemfør demooverførsel",recipient:false},expense:{title:"Registrér et køb",description:"Registrerer et fiktivt køb og trækker beløbet fra den valgte konto.",button:"Registrér køb",recipient:true}}[action];
     $("modalTitle").textContent=config.title;$("modalDescription").textContent=config.description;$("confirmAction").textContent=config.button;
     $("recipientWrap").hidden=!config.recipient;$("recipient").value="";$("amount").value="";render();$("accountSelect").selectedIndex=0;
     $("modalBackdrop").classList.add("show");setTimeout(()=>$("amount").focus(),100);
   }
   function closeModal(){$("modalBackdrop").classList.remove("show");}
-  $("addMoney").addEventListener("click",()=>openModal("add"));$("transfer").addEventListener("click",()=>openModal("transfer"));
+  $("addMoney").addEventListener("click",()=>openModal("add"));$("transfer").addEventListener("click",()=>openModal("transfer"));$("newExpense").addEventListener("click",()=>openModal("expense"));
   $("cancelModal").addEventListener("click",closeModal);$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))closeModal();});
   $("toggleBalance").addEventListener("click",()=>{balanceHidden=!balanceHidden;render();});
   $("showAll").addEventListener("click",()=>{expanded=!expanded;render();});
   $("helpButton").addEventListener("click",()=>toast("Nordlys er en fiktiv bankdemo. Ingen rigtige penge flyttes."));
   $("accountsLink").addEventListener("click",()=>document.querySelector(".account-list").scrollIntoView({behavior:"smooth",block:"center"}));
-  $("navMore").addEventListener("click",()=>{const menu=$("moreOptions");menu.hidden=!menu.hidden;$("navMore").classList.toggle("active",!menu.hidden);if(!menu.hidden)menu.scrollIntoView({behavior:"smooth",block:"nearest"});});
+  $("navMore").addEventListener("click",()=>toast("Flere funktioner er ikke en del af denne demo."));
   document.querySelectorAll(".nav-item[data-target]").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));btn.classList.add("active");const target=btn.dataset.target;if(target==="top")window.scrollTo({top:0,behavior:"smooth"});else if(target==="accounts")document.querySelector(".account-list").scrollIntoView({behavior:"smooth",block:"start"});else document.querySelector(".transactions").scrollIntoView({behavior:"smooth",block:"start"});}));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
   $("actionForm").addEventListener("submit",e=>{
     e.preventDefault();const amount=Math.round(Number($("amount").value)*100)/100;const account=accounts.find(a=>a.id===$("accountSelect").value);const recipient=$("recipient").value.trim();
     if(!Number.isFinite(amount)||amount<=0||amount>1000000){toast("Indtast et gyldigt beløb.");return;}if(!account){toast("Vælg en konto.");return;}
     if(currentAction==="add"){account.balance+=amount;transactions.unshift({id:nextId++,title:recipient||"Indsat demo-beløb",date:dateLabel(),amount,account:account.id,icon:"↙"});toast("Demo-beløbet er tilføjet.");}
+    else if(currentAction==="expense"){if(account.balance<amount){toast("Der er ikke nok demo-penge på kontoen.");return;}account.balance-=amount;transactions.unshift({id:nextId++,title:recipient||"Demo-køb",date:dateLabel(),amount:-amount,account:account.id,icon:"🧾"});toast("Købet er registreret i demoen.");}
     else {const target=accounts.find(a=>a.id!==account.id);if(!target){toast("Der mangler en anden konto.");return;}if(account.balance<amount){toast("Der er ikke nok demo-penge på kontoen.");return;}account.balance-=amount;target.balance+=amount;transactions.unshift({id:nextId++,title:"Overførsel til "+target.name,date:dateLabel(),amount:-amount,account:account.id,icon:"↗"});transactions.unshift({id:nextId++,title:"Overførsel fra "+account.name,date:dateLabel(),amount,account:target.id,icon:"↙"});toast("Demooverførslen er gennemført.");}
     render();closeModal();
   });
