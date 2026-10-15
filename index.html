@@ -19,17 +19,94 @@
 @media(min-width:600px){.top-area{padding-left:28px;padding-right:28px}.content{padding-left:28px;padding-right:28px}.modal-backdrop{align-items:center}}
 @media(max-width:380px){.top-area{padding-left:16px;padding-right:16px}.content{padding-left:12px;padding-right:12px}.brand{font-size:19px}.balance-card{padding-top:14px}.account{padding:14px 9px;gap:6px}.account-amount{font-size:12px}.actions-grid{grid-template-columns:1fr}.action{border-right:0;border-bottom:1px solid var(--line);min-height:48px}.action:last-child{border-bottom:0}.transaction{padding:12px 8px;gap:7px}.tx-amount{font-size:12px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Mobile layout refinements */
+html,body{width:100%;min-width:0;overflow-x:hidden}
+.app{width:100%;overflow:hidden}
+.top-area{padding-top:calc(16px + env(safe-area-inset-top));padding-bottom:21px}
+.topbar{min-width:0;gap:8px}
+.brand{min-width:0;overflow-wrap:anywhere;line-height:1.15}
+.top-actions{flex-shrink:0;gap:7px}
+.content{min-width:0}
+.section-head{gap:10px;min-width:0}
+.section-head h2{min-width:0}
+.link-btn{flex-shrink:0;white-space:nowrap}
+.account{grid-template-columns:minmax(0,1fr) auto;gap:6px 8px}
+.account-detail{overflow-wrap:anywhere;line-height:1.35}
+.account-amount{max-width:46vw;font-size:13px;white-space:normal;overflow-wrap:anywhere;line-height:1.3}
+.actions-grid .action{align-items:flex-start;text-align:left;padding:16px 14px;min-height:54px}
+.actions-grid .action span:last-child{text-align:left;font-size:13px}
+.spending-card{padding:13px 12px}
+.spending-top{align-items:flex-start}
+.spending-top>div{min-width:0}
+.spending-label{line-height:1.4}
+.spending-total{font-size:clamp(18px,5vw,22px);overflow-wrap:anywhere}
+.trend{flex-shrink:0;white-space:nowrap}
+.transaction{min-width:0;gap:8px;padding:13px 10px}
+.tx-main{min-width:0}
+.tx-title{font-size:13px}
+.tx-amount{flex-shrink:0;max-width:44%;white-space:normal;text-align:right;overflow-wrap:anywhere;line-height:1.35;font-size:12px}
+.bottom-nav{width:100%;padding:0 3px calc(env(safe-area-inset-bottom));}
+.nav-item{min-width:0;padding:15px 2px 13px;font-size:11px;white-space:nowrap}
+.modal-backdrop{padding:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+.modal{width:100%;border-radius:10px 10px 6px 6px;padding:20px 17px;max-height:calc(100dvh - 16px - env(safe-area-inset-top));}
+.actions{gap:8px}
+.btn{padding:12px 10px}
+.toast{width:max-content;max-width:calc(100vw - 28px);}
+@media(max-width:420px){
+  .top-area{padding-left:16px;padding-right:16px}
+  .content{padding-left:14px;padding-right:14px}
+  .brand{font-size:18px;letter-spacing:-.25px}
+  .demo-pill{font-size:9px;padding:5px 6px}
+  .icon-btn{width:30px;height:30px;flex-shrink:0}
+  .welcome{margin-top:20px;font-size:11px}
+  .page-title{font-size:clamp(21px,6vw,24px);line-height:1.2;overflow-wrap:anywhere}
+  .balance-card{margin-top:18px;padding-top:14px}
+  .balance{font-size:clamp(28px,8vw,34px);letter-spacing:-.7px;overflow-wrap:anywhere}
+  .balance small{font-size:14px}
+  .balance-foot{font-size:11px;gap:10px}
+  .section-head{margin-top:21px;margin-bottom:9px}
+  .section-head h2{font-size:16px}
+  .account{padding:14px 10px}
+  .account-name{font-size:13px}
+  .account-detail{font-size:11px}
+  .account-amount{font-size:12px;max-width:43vw}
+  .spending-label{font-size:11px}
+  .trend{font-size:10px;padding:5px}
+  .bars{gap:7px;height:62px}
+  .bar-label{font-size:10px}
+  .tx-title{font-size:12px}
+  .tx-date{font-size:10px}
+  .tx-amount{font-size:11px;max-width:46%}
+  .demo-note{font-size:10px}
+}
+@media(max-width:340px){
+  .top-area{padding-left:12px;padding-right:12px}
+  .content{padding-left:10px;padding-right:10px}
+  .brand{font-size:16px}
+  .top-actions{gap:5px}
+  .demo-pill{letter-spacing:0}
+  .balance-top{font-size:12px}
+  .account{grid-template-columns:minmax(0,1fr) minmax(76px,auto);padding:12px 8px}
+  .account-amount{font-size:11px;max-width:39vw}
+  .spending-top{gap:5px}
+  .trend{font-size:9px}
+  .nav-item{font-size:10px}
+  .actions{flex-direction:column-reverse}
+  .btn{width:100%}
+}
+
 </style>
 </head>
 <body>
 <main class="app">
   <header class="top-area">
     <div class="topbar">
-      <div class="brand"><h2>Private Banking Denmark Corporation</div>
-      <div class="top-actions"><span class="demo-pill">Private</span><button class="icon-btn" id="helpButton" aria-label="Om demoen">?</button></div>
+      <div class="brand">Nordlys Bank</div>
+      <div class="top-actions"><span class="demo-pill">DEMO</span><button class="icon-btn" id="helpButton" aria-label="Om demoen">?</button></div>
     </div>
-    <p class="welcome">DIN ØKONOMI</p>
-    <h1 class="page-title">God aften, Anders Standal</h1>
+    <p class="welcome">TORSDAG · DIN ØKONOMI</p>
+    <h1 class="page-title">God aften, Alex</h1>
     <section class="balance-card" aria-label="Samlet saldo">
       <div class="balance-top"><span>Samlet saldo</span><button class="eye" id="toggleBalance" aria-label="Skjul saldo">Skjul saldo</button></div>
       <div class="balance" id="totalBalance">12.845,50 <small>kr.</small></div>
@@ -48,14 +125,14 @@
     </section>
     <div class="section-head"><h2>Forbrug</h2><span class="subtle">Denne måned</span></div>
     <section class="spending-card" aria-label="Forbrugsoversigt">
-      <div class="spending-top"><div><div class="spending-label">Registrerede køb</div><div class="spending-total" id="spendingTotal">245,75 kr.</div></div><span class="trend">Demooversigt</span></div>
+      <div class="spending-top"><div><div class="spending-label">Registrerede køb i demoen</div><div class="spending-total" id="spendingTotal">245,75 kr.</div></div><span class="trend">Demooversigt</span></div>
       <div class="bars" aria-label="Illustrativt månedligt forbrug"><div class="bar-wrap"><div class="bar" style="height:35%"></div><span class="bar-label">Jun</span></div><div class="bar-wrap"><div class="bar" style="height:54%"></div><span class="bar-label">Jul</span></div><div class="bar-wrap"><div class="bar" style="height:42%"></div><span class="bar-label">Aug</span></div><div class="bar-wrap"><div class="bar" style="height:67%"></div><span class="bar-label">Sep</span></div><div class="bar-wrap"><div class="bar current" style="height:48%"></div><span class="bar-label">Okt</span></div></div>
     </section>
     <div class="section-head"><h2>Seneste posteringer</h2><button class="link-btn" id="showAll">Se alle　›</button></div>
     <section class="transactions" id="transactions"></section>
-    <p class="demo-note">Forventet tid før næste opdatering: 24 timer</p>
+    <p class="demo-note">Demo med fiktive beløb. Ingen rigtig bankforbindelse eller betalinger. Saldo og posteringer er kun eksempler og nulstilles, når siden genindlæses.</p>
   </div>
-  <div class="footer">Private Banking Denmark Corporation</div>
+  <div class="footer">Nordlys er et fiktivt bankapp-koncept.</div>
 </main>
 <nav class="bottom-nav" aria-label="Hovednavigation">
   <button class="nav-item active" data-target="top"><span>Hjem</span></button>
@@ -64,7 +141,7 @@
   <button class="nav-item" id="navMore"><span>Mere</span></button>
 </nav>
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <form class="modal" id="actionForm"><div class="modal-handle"></div><h2 id="modalTitle">Handling</h2><p id="modalDescription">.</p>
+  <form class="modal" id="actionForm"><div class="modal-handle"></div><h2 id="modalTitle">Handling</h2><p id="modalDescription">Dette er en lokal simulering.</p>
     <label class="field" for="amount">Beløb i kroner</label><input class="input" id="amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" placeholder="0,00" required>
     <div id="recipientWrap" hidden><label class="field" for="recipient">Modtager eller beskrivelse</label><input class="input" id="recipient" maxlength="60" placeholder="Fx Fiktiv butik"></div>
     <label class="field" for="accountSelect">Vælg konto</label><select id="accountSelect"></select>
@@ -118,7 +195,7 @@
   $("cancelModal").addEventListener("click",closeModal);$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))closeModal();});
   $("toggleBalance").addEventListener("click",()=>{balanceHidden=!balanceHidden;render();});
   $("showAll").addEventListener("click",()=>{expanded=!expanded;render();});
-  $("helpButton").addEventListener("click",()=>toast("Private Banking Denmark Corporation — Anders Ultra Diamond Member."));
+  $("helpButton").addEventListener("click",()=>toast("Nordlys er en fiktiv bankdemo. Ingen rigtige penge flyttes."));
   $("accountsLink").addEventListener("click",()=>document.querySelector(".account-list").scrollIntoView({behavior:"smooth",block:"center"}));
   $("navMore").addEventListener("click",()=>{const menu=$("moreOptions");menu.hidden=!menu.hidden;$("navMore").classList.toggle("active",!menu.hidden);if(!menu.hidden)menu.scrollIntoView({behavior:"smooth",block:"nearest"});});
   document.querySelectorAll(".nav-item[data-target]").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));btn.classList.add("active");const target=btn.dataset.target;if(target==="top")window.scrollTo({top:0,behavior:"smooth"});else if(target==="accounts")document.querySelector(".account-list").scrollIntoView({behavior:"smooth",block:"start"});else document.querySelector(".transactions").scrollIntoView({behavior:"smooth",block:"start"});}));
